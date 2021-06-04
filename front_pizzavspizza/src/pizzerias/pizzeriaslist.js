@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import DummyData from './dummydata.json';
+import PizzaDetail from './pizzeriadetail';
 
 class PizzaList extends Component {
 	render(){
 		return(
-			<h6>Pizza Name Goes Here</h6>
+			<div>
+				{DummyData.map( item => {
+					return <PizzaDetail p = {item}/>
+					})
+			}
+			</div>
 		)
 	}
 
