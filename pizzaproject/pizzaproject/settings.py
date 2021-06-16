@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from django.conf.urls.static import static
+from django.conf import settings
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@hhrj*e4ltyauze(5pi%h9n^$==rxq4j6iixuanw(4n3#6bpym'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ '*' ]
 
 
 # Application definition
@@ -130,3 +131,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if DEBUG is True:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = '/static/'
+    STATICFILES_DIRS = [
+    Path(BASE_DIR, "static")
+    ]
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = Path(BASE_DIR, 'media')
+else:
+    STATIC_URL = '/static/'
+STATIC_ROOT = '/var/www/venv/BookProject/pizzaproject/static/'
+    MEDIA_URL = '/media/'
+MEDIA_ROOT = Path(BASE_DIR, '/var/www/venv/BookProject/pizzaproject/media/')
