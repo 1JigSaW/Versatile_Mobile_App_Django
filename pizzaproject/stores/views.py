@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from .serializers import PizzeriaListSerializer, PizzeriaDetailSerializer
 from .models import Pizzeria
+from rest_framework.parsers import MultiPartParser
 
 class PizzeriaListAPIView(generics.ListAPIView):
 	queryset = Pizzeria.objects.all()
@@ -13,6 +14,7 @@ class PizzeriaRetrieveAPIView(generics.RetrieveAPIView):
 	serializer_class = PizzeriaDetailSerializer
 
 class PizzeriaCreateAPIView(generics.CreateAPIView):
+	parser_classes = [MultiPartParser]
 	queryset = Pizzeria.objects.all()
 	serializer_class = PizzeriaDetailSerializer
 
