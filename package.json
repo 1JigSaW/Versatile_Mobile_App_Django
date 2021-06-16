@@ -3,6 +3,7 @@
     "expo-cli": "^4.5.2",
     "expo-image-picker": "^10.1.4",
     "formik": "^2.2.9",
+    "react-native-dotenv": "^2.5.5",
     "save": "^2.4.0",
     "yup": "^0.32.9"
   }
