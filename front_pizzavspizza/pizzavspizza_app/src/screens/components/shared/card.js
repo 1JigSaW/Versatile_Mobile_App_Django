@@ -15,7 +15,6 @@ const Card = ({ logo, title, details }) => {
 
 const styles = StyleSheet.create({
 container: {
-  // можно поиграться
   marginTop: 20,
   backgroundColor: 'white',
   overflow: 'hidden',
