@@ -6,14 +6,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import ListView from "./src/screens/components/list_view";
 import DetailView from "./src/screens/components/detail_view";
-import ScreenA from "./src/screens/drawer/screenA.js";
-import ScreenB from "./src/screens/drawer/screenB.js";
-import ScreenC from "./src/screens/drawer/screenC.js";
+import AddPizzeria from './src/screens/drawer/addPizzeria.js';
+import RegForm from './src/screens/drawer/regForm.js';
+import LoginForm from './src/screens/drawer/loginForm.js';
+import TabOne from './src/screens/tabs/tab1.js';
+import TabTwo from './src/screens/tabs/tab2.js';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import TabOne from "./src/screens/tabs/tab1.js";
-import TabTwo from "./src/screens/tabs/tab2.js";
-const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
 renderTabComponents = () => (

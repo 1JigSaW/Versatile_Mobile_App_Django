@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Pizzeria, Image
+from rest_framework.authtoken.models import Token
 from rest_framework.reverse import reverse
+from .models import Pizzeria
+from .models import Image
 
 class PizzeriaListSerializer(serializers.ModelSerializer):
     
@@ -56,3 +59,20 @@ class PizzeriaDetailSerializer(serializers.ModelSerializer):
     def get_delete(self, obj):
         return reverse('pizzeria_delete', args=(obj.pk, ))
 
+UserModel = get_user_model()
+
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
+    def create(self, validated_data):
+        user = UserModel.objects.create(
+            username=validated_data['username']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        new_token = Token.object.create(user=user)
+        return user
+
+    class Meta:
+        model = get_user_model()
+        fields = ['username', 'password']
